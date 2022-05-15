@@ -1,0 +1,4 @@
+add R3 R1
+sub R1 R2
+beq R0 4
+ld  R2 R3
