@@ -1,0 +1,411 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f7f4ef;
+  font-family: "Georgia", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== Header ========== */
+.header {
+  background: #1a1a18;
+  color: #f7f4ef;
+  padding: 32px 24px 24px;
+  text-align: center;
+}
+.header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+.header p {
+  font-family: "Source Sans 3", sans-serif;
+  color: #a0998a;
+  margin-top: 6px;
+  font-size: 15px;
+}
+
+/* ========== Filters ========== */
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0 24px 20px;
+  background: #1a1a18;
+  justify-content: center;
+}
+.filter-btn {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1.5px solid #3a3a36;
+  background: transparent;
+  color: #c4bfb5;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.15s;
+}
+.filter-btn:hover {
+  border-color: #e8c875;
+  color: #e8c875;
+}
+.filter-btn.active {
+  background: #e8c875;
+  border-color: #e8c875;
+  color: #1a1a18;
+}
+.count-badge {
+  background: #e8c875;
+  color: #1a1a18;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ========== Card Grid ========== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 28px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1.5px solid #e8e3db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+.card-header {
+  padding: 28px 24px 20px;
+}
+.card-emoji {
+  font-size: 40px;
+  margin-bottom: 12px;
+  display: block;
+}
+.card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a18;
+  line-height: 1.3;
+}
+.card-source {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 12px;
+  color: #9a9389;
+  margin-top: 4px;
+}
+.card-desc {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 14px;
+  color: #5a5550;
+  margin-top: 10px;
+  line-height: 1.55;
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 24px 16px;
+}
+.tag {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.card-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1.5px solid #f0ebe3;
+}
+.stat {
+  padding: 12px 10px;
+  text-align: center;
+}
+.stat-val {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a18;
+}
+.stat-label {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 10px;
+  color: #9a9389;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-top: 2px;
+}
+
+/* ========== Modal ========== */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 18, 14, 0.7);
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  backdrop-filter: blur(4px);
+}
+.modal {
+  background: #fff;
+  border-radius: 20px;
+  max-width: 720px;
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  animation: slideUp 0.25s ease;
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.modal-header {
+  padding: 32px 32px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.modal-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 900;
+  color: #1a1a18;
+  line-height: 1.2;
+}
+.modal-source {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 13px;
+  color: #9a9389;
+  margin-top: 4px;
+}
+.modal-source a {
+  color: #c8602a;
+  text-decoration: none;
+}
+.modal-source a:hover {
+  text-decoration: underline;
+}
+.close-btn {
+  background: #f0ebe3;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.close-btn:hover {
+  background: #e0d8cc;
+}
+.modal-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #f0ebe3;
+  border-top: 1.5px solid #f0ebe3;
+  border-bottom: 1.5px solid #f0ebe3;
+}
+.modal-stat {
+  background: #fff;
+  padding: 16px 12px;
+  text-align: center;
+}
+.modal-stat-val {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+.modal-stat-label {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 11px;
+  color: #9a9389;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-top: 3px;
+}
+.modal-body {
+  padding: 28px 32px 36px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 600px) {
+  .modal-body {
+    grid-template-columns: 1fr;
+  }
+  .modal-header {
+    padding: 24px;
+  }
+}
+
+/* ========== Ingredients & Steps ========== */
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a18;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0ebe3;
+}
+.ingredient-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+.ingredient-item span {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 14px;
+  color: #3a3a36;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.ingredient-item.checked span {
+  text-decoration: line-through;
+  color: #b0a898;
+}
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid #d0c9be;
+  background: #fff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  margin-top: 1px;
+}
+.checkbox.checked {
+  background: #2a7c4f;
+  border-color: #2a7c4f;
+}
+.step-item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.step-num {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: #e8c875;
+  flex-shrink: 0;
+  width: 24px;
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+.step-item.checked .step-num {
+  color: #d0c9be;
+}
+.step-text {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 14px;
+  color: #3a3a36;
+  line-height: 1.55;
+  transition: color 0.15s;
+}
+.step-item.checked .step-text {
+  text-decoration: line-through;
+  color: #b0a898;
+}
+
+/* ========== Notes & Storage ========== */
+.notes-box {
+  grid-column: 1 / -1;
+  background: #f7f4ef;
+  border-radius: 12px;
+  padding: 16px 20px;
+  border-left: 4px solid #e8c875;
+}
+.notes-box p {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 14px;
+  color: #5a5550;
+  line-height: 1.6;
+}
+.storage-box {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.storage-item {
+  background: #f7f4ef;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.storage-label {
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9a9389;
+  margin-bottom: 4px;
+}
+.storage-val {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a18;
+}
+
+/* ========== Empty state ========== */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: "Source Sans 3", sans-serif;
+  color: #9a9389;
+  grid-column: 1 / -1;
+}
